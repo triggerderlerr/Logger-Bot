@@ -4,18 +4,11 @@ const { Logger } = require("term-logger");
 const { readdir } = require("fs");
 require("dotenv").config();
 
-const express = require('express');
-const server = express();
- 
-server.all('/', (req, res) => {
-  res.send(`OK`)
-})
- 
-function keepAlive() {
-  server.listen(3000, () => { console.log("Server is Ready!!" + Date.now()) });
-}
-
-module.exports = keepAlive;
+var http = require('http');
+http.createServer(function (req, res) {
+  res.write("I'm alive babe");
+  res.end();
+}).listen(8080);
 
 process.title = `Server Logger Bot | ${version}`;
 console.clear();
