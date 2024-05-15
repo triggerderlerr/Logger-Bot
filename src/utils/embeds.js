@@ -6,28 +6,28 @@ module.exports = {
     const channelCreate = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | New Channel Created`,
+        name: `${client.user.username} | Yeni oda oluşturuldu`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
         "https://cdn.discordapp.com/emojis/1138482145673871400.webp?size=96&quality=lossless"
       )
       .addFields(
-        { name: `Name`, value: `${channel.name}`, inline: true },
+        { name: `İsim`, value: `${channel.name}`, inline: true },
         { name: `ID`, value: `${channel.id}`, inline: true },
         { name: `Mention`, value: `<#${channel.id}>`, inline: true },
         {
           name: `NSFW`,
-          value: `${channel.nsfw ? "Yes :white_check_mark:" : "No :x:"}`,
+          value: `${channel.nsfw ? "Hayır :white_check_mark:" : "Evet :x:"}`,
           inline: true,
         },
         {
-          name: `Channel Category`,
+          name: `Kanal Kategorisi`,
           value: `${channel.parent.name}`,
           inline: true,
         },
         {
-          name: `Created`,
+          name: `Oluşturuldu`,
           value: `<t:${parseInt(channel.createdAt / 1000)}:R>`,
           inline: true,
         }
@@ -41,17 +41,17 @@ module.exports = {
     const channelDelete = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Deleted`,
+        name: `${client.user.username} | Kanal Silindi`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
         "https://cdn.discordapp.com/emojis/1138482145673871400.webp?size=96&quality=lossless"
       )
       .setDescription(
-        `:white_check_mark: Channel **#${channel.name}** has been deleted`
+        `:white_check_mark: **#${channel.name}** isimli kanal silindi`
       )
       .addFields(
-        { name: `Name`, value: `${channel.name}`, inline: true },
+        { name: `Adı`, value: `${channel.name}`, inline: true },
         { name: `ID`, value: `${channel.id}`, inline: true },
         {
           name: `NSFW`,
@@ -70,17 +70,17 @@ module.exports = {
     const channelPins = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Pins Update`,
+        name: `${client.user.username} | Mesaj Sabitlendi`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
         "https://cdn.discordapp.com/emojis/1138483813694046339.webp?size=96&quality=lossless"
       )
-      .setDescription(`:pushpin: Message has been pinned or unpinned`)
+      .setDescription(`:pushpin: Kanala mesaj sabitlendi ya da kaldırıldı`)
       .addFields(
-        { name: `In Channel`, value: `<#${channel.id}>`, inline: true },
-        { name: `Channel ID`, value: `${channel.id}`, inline: true },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Kanal`, value: `<#${channel.id}>`, inline: true },
+        { name: `Kanal ID`, value: `${channel.id}`, inline: true },
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return channelPins;
@@ -93,7 +93,7 @@ module.exports = {
     const channelUpdateName = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | New Channel Name`,
+        name: `${client.user.username} | Yeni Kanal Adı`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
@@ -101,16 +101,16 @@ module.exports = {
       )
       .setDescription(
         [
-          `### Channel Information:`,
-          `Name: **${newChannel.name}**`,
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
           `Mention: <#${newChannel.id}>`,
           `ID: **${newChannel.id}**`,
         ].join("\n")
       )
       .addFields(
-        { name: `From`, value: `${oldChannel.name}`, inline: true },
-        { name: `To`, value: `${newChannel.name}`, inline: true },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Öncesi`, value: `${oldChannel.name}`, inline: true },
+        { name: `Sonrası`, value: `${newChannel.name}`, inline: true },
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return channelUpdateName;
@@ -121,27 +121,27 @@ module.exports = {
     const channelNSFW = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Age Restriction Updated`,
+        name: `${client.user.username} | Kanal Yaş Sınırlaması Güncellendi`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setDescription(
         [
-          `### Channel Information:`,
-          `Name: **${newChannel.name}**`,
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
           `Mention: <#${newChannel.id}>`,
           `ID: **${newChannel.id}**`,
         ].join("\n")
       )
       .addFields(
         {
-          name: `Old Restriction`,
-          value: `${oldChannel.nsfw ? "Enabled :white_check_mark:" : "Disabled :x:"
+          name: `Eski Kısıtlama`,
+          value: `${oldChannel.nsfw ? "Etkinleştirildi :white_check_mark:" : "Engellendi :x:"
             }`,
           inline: true,
         },
         {
-          name: `New Restriction`,
-          value: `${newChannel.nsfw ? "Enabled :white_check_mark:" : "Disabled :x:"
+          name: `Yeni Kısıtlama`,
+          value: `${newChannel.nsfw ? "Etkinleştirildi :white_check_mark:" : "Engellendi :x:"
             }`,
           inline: true,
         }
@@ -158,7 +158,7 @@ module.exports = {
     const channelUpdateParent = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Category Changed`,
+        name: `${client.user.username} | Kanal Kategorisi Değiştirildi`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
@@ -166,24 +166,24 @@ module.exports = {
       )
       .setDescription(
         [
-          `### Channel Information:`,
-          `Name: **${newChannel.name}**`,
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
           `Mention: <#${newChannel.id}>`,
           `ID: **${newChannel.id}**`,
         ].join("\n")
       )
       .addFields(
         {
-          name: `From`,
+          name: `Öncesi`,
           value: `${oldChannel.parent || "None :x:"}`,
           inline: true,
         },
         {
-          name: `To`,
+          name: `Sonrası`,
           value: `${newChannel.parent || "None :x:"}`,
           inline: true,
         },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return channelUpdateParent;
@@ -196,7 +196,7 @@ module.exports = {
     const channelUpdateTopic = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Topic Changed`,
+        name: `${client.user.username} | Kanal Konusu Değişti`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
@@ -204,24 +204,24 @@ module.exports = {
       )
       .setDescription(
         [
-          `### Channel Information:`,
-          `Name: **${newChannel.name}**`,
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
           `Mention: <#${newChannel.id}>`,
           `ID: **${newChannel.id}**`,
         ].join("\n")
       )
       .addFields(
         {
-          name: `From`,
+          name: `Öncesi`,
           value: `${oldChannel.topic || `None :x:`}`,
           inline: true,
         },
         {
-          name: `To`,
+          name: `Sonrası`,
           value: `${newChannel.topic || `None :x:`}`,
           inline: true,
         },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return channelUpdateTopic;
@@ -234,7 +234,7 @@ module.exports = {
     const channelUpdateRatelimitPerUser = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Channel Slowmode Changed`,
+        name: `${client.user.username} | Kanal Yavaş Modu Değişti`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
@@ -242,24 +242,24 @@ module.exports = {
       )
       .setDescription(
         [
-          `### Channel Information:`,
-          `Name: **${newChannel.name}**`,
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
           `Mention: <#${newChannel.id}>`,
           `ID: **${newChannel.id}**`,
         ].join("\n")
       )
       .addFields(
         {
-          name: `Old Slowmode`,
+          name: `Önceki Süre`,
           value: `${oldChannel.rateLimitPerUser || "None :x:"}`,
           inline: true,
         },
         {
-          name: `New Slowmode`,
+          name: `Sonraki Süre`,
           value: `${newChannel.rateLimitPerUser || "None :x:"}`,
           inline: true,
         },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return channelUpdateRatelimitPerUser;
@@ -272,14 +272,14 @@ module.exports = {
     const emojiCreate = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | New Emoji Added`,
+        name: `${client.user.username} | Yeni Emoji Eklendi`,
         iconURL: client.user.displayAvatarURL({ dynamic: 4096 }),
       })
       .setThumbnail(emoji.url)
       .addFields(
-        { name: `Name`, value: `${emoji.name}`, inline: false },
+        { name: `Adı`, value: `${emoji.name}`, inline: false },
         { name: `ID`, value: `${emoji.id}`, inline: false },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
       );
 
     return emojiCreate;
@@ -292,14 +292,14 @@ module.exports = {
     const emojiDelete = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Emoji Removed`,
+        name: `${client.user.username} | Emoji Kaldırıldı`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(emoji.url)
       .addFields(
-        { name: `Name`, value: `${emoji.name}`, inline: false },
+        { name: `Adı`, value: `${emoji.name}`, inline: false },
         { name: `ID`, value: `${emoji.id}`, inline: false },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
       );
 
     return emojiDelete;
@@ -312,14 +312,14 @@ module.exports = {
     const emojiUpdate = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Emoji Name Changed`,
+        name: `${client.user.username} | Emoji Adı Değiştirildi`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(newEmoji.url)
       .addFields(
-        { name: `New Name`, value: `${oldEmoji.name}`, inline: false },
-        { name: `Old Name`, value: `${newEmoji.name}`, inline: false },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
+        { name: `Yeni Adı`, value: `${oldEmoji.name}`, inline: false },
+        { name: `Eski Adı`, value: `${newEmoji.name}`, inline: false },
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: false }
       );
 
     return emojiUpdate;
@@ -330,7 +330,7 @@ module.exports = {
     const guildBanAdd = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Member Banned`,
+        name: `${client.user.username} | Kullanıcı Yasaklandı`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(
@@ -338,14 +338,14 @@ module.exports = {
       )
       .setDescription(
         [
-          `**${member.user.username}** has been banned`,
+          `**${member.user.username}** isimli kullanıcı banlandı`,
           ``,
-          `**Name:** ${member.user.username}`,
+          `**Adı:** ${member.user.username}`,
           `**ID:** ${member.user.id}`,
         ].join("\n")
       )
       .setFooter({
-        text: `Reason: ${reason || "None"}`,
+        text: `Sebep: ${reason || "None"}`,
         iconURL: member.user.displayAvatarURL({ dynamic: true, size: 4096 }),
       })
       .setTimestamp();
@@ -358,16 +358,16 @@ module.exports = {
     const guildBanRemove = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${client.user.username} | Member Unbanned`,
+        name: `${client.user.username} | Kullanıcının Yasağı Kaldırıldı`,
         iconURL: client.user.displayAvatarURL({ size: 4096 }),
       })
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 4096 }))
       .setDescription(
         [
-          `**${member.user.username}** has been unbanned`,
+          `**${member.user.username}** yasağı kaldırıldı`,
           ``,
-          `**User:**`,
-          `**Name:** ${member.user.username}`,
+          `**Kullanıcı:**`,
+          `**Adı:** ${member.user.username}`,
           `**ID:** ${member.user.id}`,
         ].join("\n")
       )
@@ -383,15 +383,15 @@ module.exports = {
     const guildMemberAdd = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${member.user.username} has joined server`,
+        name: `${member.user.username} sunucuya katıldı`,
         iconURL: member.user.displayAvatarURL({ dynamic: true, size: 4096 }),
       })
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 4096 }))
-      .setDescription([`<@${member.user.id}> has joined the server`].join("\n"))
+      .setDescription([`<@${member.user.id}> sunucuya katıldı`].join("\n"))
       .addFields(
-        { name: `Name`, value: `${member.user.username}`, inline: true },
+        { name: `Adı`, value: `${member.user.username}`, inline: true },
         { name: `ID`, value: `${member.user.id}`, inline: true },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return guildMemberAdd;
@@ -404,17 +404,17 @@ module.exports = {
     const guildMemberRemove = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${member.user.username} | Left the server`,
+        name: `${member.user.username} | Sunucudan Ayrıldı`,
         iconURL: member.user.displayAvatarURL({ dynamic: true, size: 4096 }),
       })
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 4096 }))
       .setDescription(
-        [`**${member.user.username}** left the server`].join("\n")
+        [`**${member.user.username}** sunucudan ayrıldı`].join("\n")
       )
       .addFields(
-        { name: `Name`, value: `${member.user.username}`, inline: true },
+        { name: `Adı`, value: `${member.user.username}`, inline: true },
         { name: `ID`, value: `${member.user.id}`, inline: true },
-        { name: `When`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return guildMemberRemove;
@@ -427,7 +427,7 @@ module.exports = {
     const messageDelete = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `Message has been deleted`,
+        name: `Bir mesaj silindi`,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setThumbnail(
@@ -435,32 +435,32 @@ module.exports = {
       )
       .setDescription(
         [
-          `### Message content`,
+          `### Mesaj içeriği`,
           `\`\`\`${message}\`\`\``
         ].join("\n")
       )
       .addFields(
         {
-          name: `Message ID`,
+          name: `Mesaj ID`,
           value: `${message.id}`,
           inline: false,
         },
         {
-          name: `Author`,
+          name: `Kullanıcı`,
           value: `<@${message.author.id}>`,
           inline: false,
         },
         {
-          name: `Author Data`,
+          name: `Kullanıcı Bilgisi`,
           value: `${message.author.username}**/**${message.author.id}`,
           inline: false,
         },
         {
-          name: `Channel`,
+          name: `Kanal`,
           value: `<#${message.channel.id}>`,
           inline: false,
         },
-        { name: `Timestamp`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return messageDelete;
@@ -473,15 +473,15 @@ module.exports = {
     const messageUpdate = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `Message has been updated (1/2)`,
+        name: `Mesaj Güncellendi (1/2)`,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setThumbnail(
-        "https://cdn.discordapp.com/attachments/1142475983396536451/1181689429723717682/pencil.png?ex=6581f90a&is=656f840a&hm=e37d6a9945fa953a8dc8b9e3ff22965f28c203b5b2c5dd6f4c101a5e2c380938&"
+        "https://cdn.discordapp.com/attachments/1240076731860123658/1240431838464573470/pencil.png?ex=664689ac&is=6645382c&hm=e84a387a18d69beb071af45acf7725dcc1ec6b9a309ec5c7c4f3a13cb68ee6dc&"
       )
       .setDescription(
         [
-          `### Source Message`,
+          `### Mesaj Kaynağı`,
           `\`\`\`${oldMessage}\`\`\``
         ].join("\n")
       )
@@ -497,40 +497,40 @@ module.exports = {
     const messageUpdate = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `Message has been updated (2/2)`,
+        name: `Mesaj Güncellendi (2/2)`,
         iconURL: client.user.displayAvatarURL({ dynamic: true }),
       })
       .setThumbnail(
-        "https://cdn.discordapp.com/attachments/1142475983396536451/1181689429723717682/pencil.png?ex=6581f90a&is=656f840a&hm=e37d6a9945fa953a8dc8b9e3ff22965f28c203b5b2c5dd6f4c101a5e2c380938&"
+        "https://cdn.discordapp.com/attachments/1240076731860123658/1240431838464573470/pencil.png?ex=664689ac&is=6645382c&hm=e84a387a18d69beb071af45acf7725dcc1ec6b9a309ec5c7c4f3a13cb68ee6dc&"
       )
       .setDescription(
         [
-          `### Updated Message`,
+          `### Güncellenen Mesaj`,
           `\`\`\`${newMessage}\`\`\``
         ].join("\n")
       )
       .addFields(
         {
-          name: `Message ID`,
+          name: `Mesaj ID`,
           value: `${newMessage.id}`,
           inline: false,
         },
         {
-          name: `Author`,
+          name: `Kullanıcı`,
           value: `<@${newMessage.author.id}>`,
           inline: false,
         },
         {
-          name: `Author Data`,
+          name: `Kullanıcı Bilgisi`,
           value: `${newMessage.author.username}**/**${newMessage.author.id}`,
           inline: false,
         },
         {
-          name: `Channel`,
+          name: `Kanal`,
           value: `<#${newMessage.channel.id}>`,
           inline: false,
         },
-        { name: `Timestamp`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
       );
 
     return messageUpdate;
@@ -543,7 +543,7 @@ module.exports = {
     const voiceJoin = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Joined Voice`,
+        name: `${newState.member.user.username} | Sese Katıldı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -553,10 +553,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${newState.member.user.id}> **joined** voice channel <#${newState.channel.id}>`
+        `<@${newState.member.user.id}> sesli sohbete **katıldı** <#${newState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
@@ -571,7 +571,7 @@ module.exports = {
     const voiceLeft = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Left Voice`,
+        name: `${newState.member.user.username} | Sesten Ayrıldı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -581,10 +581,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${oldState.member.user.id}> **left** voice channel <#${oldState.channel.id}>`
+        `<@${oldState.member.user.id}> ses kanalından **ayrıldı** <#${oldState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
@@ -599,7 +599,7 @@ module.exports = {
     const voiceSelfMute = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Muted Themselves`,
+        name: `${newState.member.user.username} | Kendini Sessize Aldı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -609,10 +609,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${newState.member.user.id}> has **muted** themselves in channel <#${newState.channel.id}>`
+        `<@${newState.member.user.id}> kullanıcı kendini **sessize aldı** <#${newState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
@@ -627,7 +627,7 @@ module.exports = {
     const voiceSelfUnmute = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Unmuted Themselves`,
+        name: `${newState.member.user.username} | Mikrofonunu Açtı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -637,10 +637,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${newState.member.user.id}> has **unmuted** themselves in channel <#${newState.channel.id}>`
+        `<@${newState.member.user.id}> kullanıcı mikrofonunu açtı <#${newState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
@@ -655,7 +655,7 @@ module.exports = {
     const voiceSelfDeaf = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Deafended Themselves`,
+        name: `${newState.member.user.username} | Kendini Sağırlaştırdı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -665,10 +665,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${newState.member.user.id}> has **deafened** themselves in channel <#${newState.channel.id}>`
+        `<@${newState.member.user.id}> kullanıcı kendini **sağırlaştırdı** <#${newState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
@@ -683,7 +683,7 @@ module.exports = {
     const voiceSelfUndeaf = new EmbedBuilder()
       .setColor(client.color)
       .setAuthor({
-        name: `${newState.member.user.username} | Undeafended Themselves`,
+        name: `${newState.member.user.username} | Kulaklığını Açtı`,
         iconURL: newState.member.user.displayAvatarURL({
           dynamic: true,
           size: 4096,
@@ -693,10 +693,10 @@ module.exports = {
         "https://cdn.discordapp.com/attachments/1050740883319967764/1155814932999327814/1f50a.png"
       )
       .setDescription(
-        `<@${newState.member.user.id}> has **undeafened** themselves in channel <#${newState.channel.id}>`
+        `<@${newState.member.user.id}> kullanıcı kulaklığını açtı <#${newState.channel.id}>`
       )
       .addFields({
-        name: `When`,
+        name: `Zaman`,
         value: `<t:${parseInt(date / 1000)}:R>`,
         inline: true,
       });
