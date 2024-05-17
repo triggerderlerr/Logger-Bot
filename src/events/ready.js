@@ -11,7 +11,7 @@ module.exports = async (client) => {
     joinLog: client.channels.cache.get(cfg.channels.joinLog),
     leaveLog: client.channels.cache.get(cfg.channels.leaveLog),
     messageLog: client.channels.cache.get(cfg.channels.messageLog),
-    voiceLog: client.channels.cache.get(cfg.channels.voiceLog),
+    // voiceLog: client.channels.cache.get(cfg.channels.voiceLog),
   };
 
   setInterval(() => {
