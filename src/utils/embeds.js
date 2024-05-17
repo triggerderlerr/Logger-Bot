@@ -87,34 +87,34 @@ module.exports = {
   },
 
   // Event: channelUpdate
-  // channelUN: (client, newChannel, oldChannel) => {
-    // var date = Date.now();
+  channelUN: (client, newChannel, oldChannel) => {
+    var date = Date.now();
 
-    // const channelUpdateName = new EmbedBuilder()
-      // .setColor(client.color)
-      // .setAuthor({
-        // name: `${client.user.username} | Yeni Kanal Adı`,
-        // iconURL: client.user.displayAvatarURL({ size: 4096 }),
-      // })
-      // .setThumbnail(
-        // "https://cdn.discordapp.com/emojis/1138482145673871400.webp?size=96&quality=lossless"
-      // )
-      // .setDescription(
-        // [
-          // `### Kanal Bilgisi:`,
-          // `Adı: **${newChannel.name}**`,
-          // `Mention: <#${newChannel.id}>`,
-          // `ID: **${newChannel.id}**`,
-        // ].join("\n")
-      // )
-      // .addFields(
-        // { name: `Öncesi`, value: `${oldChannel.name}`, inline: true },
-        // { name: `Sonrası`, value: `${newChannel.name}`, inline: true },
-        // { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
-      // );
+    const channelUpdateName = new EmbedBuilder()
+      .setColor(client.color)
+      .setAuthor({
+        name: `${client.user.username} | Yeni Kanal Adı`,
+        iconURL: client.user.displayAvatarURL({ size: 4096 }),
+      })
+      .setThumbnail(
+        "https://cdn.discordapp.com/emojis/1138482145673871400.webp?size=96&quality=lossless"
+      )
+      .setDescription(
+        [
+          `### Kanal Bilgisi:`,
+          `Adı: **${newChannel.name}**`,
+          `Mention: <#${newChannel.id}>`,
+          `ID: **${newChannel.id}**`,
+        ].join("\n")
+      )
+      .addFields(
+        { name: `Öncesi`, value: `${oldChannel.name}`, inline: true },
+        { name: `Sonrası`, value: `${newChannel.name}`, inline: true },
+        { name: `Zaman`, value: `<t:${parseInt(date / 1000)}:R>`, inline: true }
+      );
 
-    // return channelUpdateName;
-  // },
+    return channelUpdateName;
+  },
 
   // Event: channelUpdate
   channelUNSFW: (client, newChannel, oldChannel) => {
